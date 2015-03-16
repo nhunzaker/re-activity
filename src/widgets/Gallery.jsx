@@ -1,23 +1,13 @@
-import Figure     from 'widgets/Figure'
-import prettydate from 'pretty-date'
+import GalleryItem from 'widgets/GalleryItem'
 
-const Gallery = React.createClass({
+let Gallery = React.createClass({
 
-  getDefaultProps() {
-    return {
-      photos: []
-    }
+  propTypes: {
+    photos: React.PropTypes.any.isRequired
   },
 
   getFigure(record, key) {
-    return (
-      <li key={ key } className="ruled-bottom pad-2-left pad-2-right flex flex-center">
-        <Figure src={ record.get('photo') } avatar small />
-        <p className="pad-2-left">
-          Uploaded <b>{ prettydate.format(new Date(record.get('timestamp'))) }</b>
-        </p>
-      </li>
-    )
+    return (<GalleryItem key={ key } record={ record } />)
   },
 
   render() {

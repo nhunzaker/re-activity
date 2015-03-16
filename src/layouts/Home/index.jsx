@@ -52,7 +52,7 @@ const Home = React.createClass({
           <FabUploader onUpload={ this._onUpload }  />
 
           <div className="home-body margin-10-right">
-            <Gallery photos={ photos } />
+            <Gallery photos={ photos.state } />
           </div>
         </Container>
       </main>

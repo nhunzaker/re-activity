@@ -20,10 +20,12 @@ let Toolbar = React.createClass({
   },
 
   render() {
-    let { absolute, className, fill } = this.props
+    let { absolute, className, color, fill, shadow } = this.props
 
     let css = cx('toolbar', className, cx({
-      [`fill-${ fill }`]: fill
+      [`fill-${ fill }`]     : fill,
+      [`color-${ color }`]   : color,
+      [`shadow-${ shadow }`] : shadow,
     }))
 
     return (
