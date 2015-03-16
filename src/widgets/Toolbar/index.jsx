@@ -8,17 +8,6 @@ let Toolbar = React.createClass({
 
   statics: { Actions },
 
-  propTypes: {
-    className: React.PropTypes.string
-  },
-
-  getDefaultProps() {
-    return {
-      className: '',
-      fill: false
-    }
-  },
-
   render() {
     let { absolute, className, color, fill, shadow } = this.props
 
