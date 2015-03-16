@@ -1,6 +1,5 @@
 import Manifest from 'Manifest'
 import React    from 'react/addons'
-import Router   from 'react-router'
 
 let TransitionGroup = React.addons.TransitionGroup
 

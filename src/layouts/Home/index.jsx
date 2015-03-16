@@ -8,10 +8,11 @@ import cx          from 'classnames'
 
 import './style'
 
-const EXIT_TIME = 450
-const baseClass = 'activity flex-grow fill-primary home'
-
 const Home = React.createClass({
+
+  statics: {
+    EXIT_TIME: 450
+  },
 
   getInitialState() {
     return {
@@ -21,12 +22,11 @@ const Home = React.createClass({
 
   componentWillLeave(callback) {
     this.setState({ exiting: true })
-    setTimeout(callback, EXIT_TIME)
+    setTimeout(callback, Home.EXIT_TIME)
   },
 
   getClassName() {
-    return cx({
-      [baseClass] : true,
+    return cx('home activity fill-primary', {
       'home-exit' : this.state.exiting
     })
   },

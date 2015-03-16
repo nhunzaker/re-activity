@@ -2,10 +2,11 @@ import Figure   from 'widgets/Figure'
 import Uploader from 'widgets/Uploader'
 import cx       from 'classnames'
 
-const EXIT_TIME = 450
-const baseClass = 'activity flex-grow align-center fill-primary login'
+let Login = React.createClass({
 
-const Login = React.createClass({
+  statics: {
+    EXIT_TIME: 450
+  },
 
   getInitialState() {
     return {
@@ -15,7 +16,7 @@ const Login = React.createClass({
 
   componentWillLeave(callback) {
     this.setState({ exiting: true })
-    setTimeout(callback, EXIT_TIME)
+    setTimeout(callback, Login.EXIT_TIME)
   },
 
   getFigure() {
@@ -24,21 +25,25 @@ const Login = React.createClass({
     return src ? (<Figure src={ src } avatar={ !this.state.exiting } />) : null
   },
 
-  render() {
-    let { actions, stores } = this.props
-
-    let src = stores.user.get('photo')
-
-    let className = cx('activity flex-grow align-center fill-primary login', {
+  getClassName() {
+    return cx('activity align-center fill-primary', {
       'will-exit' : this.state.exiting
     })
+  },
+
+  render() {
+    let { user } = this.props.stores
 
     return (
-      <main className={ className }>
+      <main className={ this.getClassName() }>
         { this.getFigure() }
-        <Uploader src={ src } onUpload={ actions.user.login } onConfirm={ this.onConfirm } />
+        <Uploader src={ user.get('photo') } onUpload={ this.onUpload } onConfirm={ this.onConfirm } />
       </main>
     )
+  },
+
+  onUpload(photo) {
+    this.props.actions.user.login(photo)
   },
 
   onConfirm() {
