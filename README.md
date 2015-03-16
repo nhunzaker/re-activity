@@ -1,4 +1,4 @@
-# Reactivity
+# Re-Activity
 
 After installing Node.js:
 
