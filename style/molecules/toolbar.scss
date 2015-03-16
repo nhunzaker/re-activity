@@ -1,0 +1,21 @@
+.toolbar {
+  align-items: flex-start;
+  display: flex;
+  padding: unit(2);
+
+  &.is-absolute {
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+  }
+
+  .will-enter & .icon {
+    animation: 0.3s spin-in;
+  }
+
+  .will-leave & .icon {
+    animation: 0.3s spin-out;
+  }
+}

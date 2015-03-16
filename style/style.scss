@@ -1,0 +1,76 @@
+@import "values/colors";
+@import "values/metrics";
+@import "values/sizes";
+
+/**
+ * Generators provide reuseable calculations
+ * and mixin behavior
+ */
+@import "generators/functions";
+@import "generators/mixins";
+
+/**
+ * Assumptions are foundational reset styles
+ */
+@import "assumptions/document";
+@import "assumptions/typography";
+@import "assumptions/inputs";
+@import "assumptions/figure";
+@import "assumptions/lists";
+
+/**
+ * Atoms are unsplittable styles designed for reuse
+ */
+@import "atoms/color";
+@import "atoms/display";
+@import "atoms/fill";
+@import "atoms/flex";
+@import "atoms/margin";
+@import "atoms/pad";
+@import "atoms/position";
+@import "atoms/shadow";
+@import "atoms/type";
+@import "atoms/radius";
+@import "atoms/hide";
+@import "atoms/align";
+@import "atoms/icon";
+@import "atoms/pull";
+@import "atoms/ruling";
+
+/**
+ * Molecules are elements that require relationships between parts
+ */
+@import "molecules/container";
+@import "molecules/figure";
+@import "molecules/toolbar";
+@import "molecules/uploader";
+
+/**
+ * Animations!
+ */
+@import "animations/pop";
+@import "animations/spin-out";
+@import "animations/spin-in";
+@import "animations/swipe-down";
+
+.main {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.activity {
+  height: 100%;
+  left: 0;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  transition: 0.2s opacity 0.1s;
+
+  &.will-leave {
+    opacity: 0;
+  }
+}
