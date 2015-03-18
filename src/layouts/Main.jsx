@@ -1,5 +1,6 @@
 import Manifest from 'Manifest'
 import React    from 'react/addons'
+import Window   from 'widgets/Window'
 
 let TransitionGroup = React.addons.TransitionGroup
 
@@ -16,7 +17,9 @@ let Main = React.createClass({
 
     return (
       <TransitionGroup className="main">
-        <Activity key={ this.props.pathname } { ...this.props } />
+        <Window key={ this.props.pathname }>
+          <Activity { ...this.props } />
+        </Window>
       </TransitionGroup>
     )
   }

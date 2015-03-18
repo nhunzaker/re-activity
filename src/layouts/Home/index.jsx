@@ -10,34 +10,13 @@ import './style'
 
 const Home = React.createClass({
 
-  statics: {
-    EXIT_TIME: 450
-  },
-
-  getInitialState() {
-    return {
-      exiting : false
-    }
-  },
-
-  componentWillLeave(callback) {
-    this.setState({ exiting: true })
-    setTimeout(callback, Home.EXIT_TIME)
-  },
-
-  getClassName() {
-    return cx('home activity fill-primary', {
-      'home-exit' : this.state.exiting
-    })
-  },
-
   render() {
     let { user, photos } = this.props.stores
 
     let photo = user.get('photo')
 
     return (
-      <main className={ this.getClassName() }>
+      <main className="activity home fill-primary">
         <Toolbar className="is-absolute color-white">
           <a href="home" onClick={ this._onNav }><Icon type="arrow-back" /></a>
 
@@ -65,7 +44,7 @@ const Home = React.createClass({
 
   _onNav(e) {
     e.preventDefault()
-    this.props.actions.history.push('')
+    this.props.actions.history.pop()
   }
 
 })

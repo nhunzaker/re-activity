@@ -1,10 +1,9 @@
-import Store     from 'microcosm/store'
-import Immutable from 'immutable'
+import Store from 'microcosm/store'
 
 class History extends Store {
 
-  getInitialState() {
-    return Immutable.Stack([ window.location.pathname.slice(1) ])
+  get state() {
+    return decodeURI(window.location.pathname + window.location.search).slice(1)
   }
 
   register({ history }) {
@@ -16,12 +15,10 @@ class History extends Store {
 
   push(url) {
     window.history.pushState(null, null, url)
-    this.state = this.state.push(url)
   }
 
   pop() {
     window.history.back()
-    this.state = this.state.pop()
   }
 
 }

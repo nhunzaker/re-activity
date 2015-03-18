@@ -1,6 +1,7 @@
 import Main      from 'layouts/Main'
 import Microcosm from 'microcosm'
 import React     from 'react'
+import History   from 'services/History'
 
 class App extends Microcosm {
 
@@ -18,12 +19,16 @@ class App extends Microcosm {
       user    : require('stores/user'),
       photos  : require('stores/photos')
     })
+
+    this.history = new History({
+      onPopState: this.actions.history.refresh
+    })
   }
 
   render(el) {
     let component = <Main actions={ this.actions }
                           stores={ this.stores }
-                          pathname={ this.stores.history.state.peek() } />
+                          pathname={ this.stores.history.state } />
 
     React.render(component, el)
   }

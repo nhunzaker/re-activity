@@ -1,17 +1,22 @@
-$figure-transition   : 0.4s;
-$figure-avatar       : 32 * 8px;
-$figure-avatar-small : 8 * 8px;
+$figure-transition   : 0.3s;
+$figure-avatar       : unit(32);
+$figure-avatar-small : unit(8);
 $figure-easing       : cubic-bezier(.48,-0.01,.47,1.36);
 
 .figure {
+  border-radius: 0;
   display: block;
-  height: unit(32);
+  height: $figure-avatar + unit(1);
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
   width: 100%;
   transform: translateZ(0);
-  transition: $figure-transition all ease-out;
+  transition:
+    $figure-transition margin ease-out,
+    $figure-transition width ease-out 0.3s,
+    $figure-transition height ease-out,
+    $figure-transition border-radius ease-out;
   width: 100%;
 
   &:after {
@@ -37,6 +42,7 @@ $figure-easing       : cubic-bezier(.48,-0.01,.47,1.36);
 
   &.is-avatar {
     animation: 0.4s pop;
+    border-radius: 50%;
     display: inline-block;
     margin: unit(1);
     height: $figure-avatar;
@@ -44,11 +50,6 @@ $figure-easing       : cubic-bezier(.48,-0.01,.47,1.36);
 
     &:after {
       opacity: 0;
-    }
-
-    img {
-      border-radius: 50%;
-      transition: 0.4s border-radius;
     }
 
     &.is-small {

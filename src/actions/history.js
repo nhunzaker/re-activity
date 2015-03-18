@@ -4,6 +4,8 @@ export default {
     return url
   },
 
-  pop() {}
+  pop() {},
+
+  refresh() {}
 
 }
